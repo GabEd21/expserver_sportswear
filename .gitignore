@@ -1,0 +1,8 @@
+# Ignore npm package lock file
+package-lock.json
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore admin SDK files
+path/to/admin-sdk.json
