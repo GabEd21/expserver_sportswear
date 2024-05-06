@@ -14,7 +14,7 @@ const items = db.collection(`items`)
 // server.js
 const express = require('express');
 const app = express();
-const port = 2000; // Choose any port you prefer
+const port = 2000; 
 
 app.use('/images', express.static('images'));
 

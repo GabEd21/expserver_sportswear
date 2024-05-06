@@ -6,3 +6,5 @@ node_modules/
 
 # Ignore admin SDK files
 path/to/admin-sdk.json
+
+/sportswear-a7c5e-firebase-adminsdk-6i4zx-5e632cac5e.json
