@@ -9,6 +9,7 @@ admin.initializeApp({
 const db = admin.firestore()
 const cors = require('cors');
 const items = db.collection(`items`)
+const cart = db.collection(`cart`)
 
 
 // server.js
@@ -27,6 +28,29 @@ app.use(
 )
 
 app.use(express.json());
+
+app.post('/cart/add', async (req, res) => {
+  try {
+      const newItem = req.body;
+      await cart.add(newItem);
+      res.status(201).send('Item added to cart successfully');
+  } catch (error) {
+      console.error('Error adding item to cart:', error);
+      res.status(500).send('Error adding item to cart');
+  }
+});
+
+// Route to get items in the cart
+app.get('/cart', async (req, res) => {
+  try {
+      const cartSnapshot = await cart.get();
+      const cartItems = cartSnapshot.docs.map(doc => doc.data());
+      res.json(cartItems);
+  } catch (error) {
+      console.error('Error getting cart items:', error);
+      res.status(500).send('Error getting cart items');
+  }
+});
 
 // Define routes
 app.get('/', async (req, res) => {
